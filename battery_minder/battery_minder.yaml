@@ -1,0 +1,30 @@
+BatteryCheck:
+  module: battery_minder
+  class: battery_minder
+  log_level: DEBUG
+  manual_scan: input_boolean.battery_scan
+  warning_level: 99 # integer
+  urgent_level: 85
+  instant_notification: False
+  ignore_unknown: False
+  max_notification_frequency: 10 # minutes
+  included_entities:
+    - entity_id: ".*"
+      attribute: "battery_level"
+    - entity_id: "^sensor.*battery_level*"
+  excluded_entities:
+    - vacuum.rosie
+    - sensor.sm_g950u_battery_level
+    - sensor.battery_level_2
+    - sensor.vacuum_rosie_battery_level
+  non_numeric_checks:
+    - low
+    - lo
+  report_if_charging: False
+  run_times: # use HH:MM:SS in 24 hour format e.g. - "22:00:00"
+    - "08:00:00"
+    - "12:00:00"
+  persistent_notification: true
+  phones:
+    - mobile_app_bob_phone
+  notification_color: red

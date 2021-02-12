@@ -1,0 +1,21 @@
+GarageMotion:
+  module: auto_light
+  class: auto_light
+  log_level: DEBUG
+  log: main_log
+  OnEntities:
+    - entity_id: binary_sensor.garage_motion_1
+      state: "on"
+    - entity_id: binary_sensor.wyzesense_779c130a
+      state: "on"
+    - entity_id: cover.garage_cover
+      state: "opening"
+  OffEntities:
+    - entity_id: binary_sensor.garage_motion_1
+      state: "off"
+  EnableOffEntity: input_boolean.enable_garage_light
+  EnableOffEnableState: "on"
+  EnableOffDisableState: "off"
+  LightEntity: light.garage_light
+  OnTimeMin: 4
+

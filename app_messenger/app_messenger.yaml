@@ -1,0 +1,13 @@
+app_messenger:
+  module: app_messenger
+  class: app_messenger
+  log_level: DEBUG
+  log: main_log
+  device: mobile_app_bob_phone
+  title: Appdaemon Alert
+  message: "This is an message from Appdaemon"
+  data:
+    image:
+    clickAction:
+    ttl: 0
+    priority: "high"

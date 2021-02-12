@@ -1,0 +1,10 @@
+CoverEntityScanned:
+  module: cover_tag
+  class: cover_tag_scanned
+  log_level: INFO
+  log: tags_log
+  tag_id: cae3c8c5-faac-4585-be93-a1199fa98fcd
+  cover_entity: cover.garage_door
+  devices:
+    - effd5529caba2c3f
+    - 0738d613818942068b5851cf86103186

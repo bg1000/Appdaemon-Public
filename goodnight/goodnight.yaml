@@ -1,0 +1,83 @@
+GoodNight:
+  module: goodnight
+  class: goodnight
+  log_level: DEBUG
+  log: tags_log
+  max_rechecks: 1
+  overall_failure_message: "Unable to automatically correct all noted problems."
+  overall_success_message: "House is ready for bed. Goodnight."
+  notification_list:
+    - mobile_app_bob_phone
+    - mobile_app_pat_phone
+  tag_ids:
+    - "6afb625f-c352-4a78-982a-31606b16c8b6"
+    - "8b65e2aa-ef95-445e-9e14-18c82ed14f79"
+  tests:
+    - entity_id: cover.garage_door
+      attribute: "state"
+      test: "=="
+      value: "closed"
+      failure_service_call: "cover/close_cover"
+      service_parameters: { "entity_id": "cover.garage_door" }
+      service_message: "Closing Garage Door"
+      retry_seconds: 20
+      failure_message: "Garage Door is open"
+      final_failure_message: "Unable to close garage door"
+    - entity_id: binary_sensor.dishwasher_on
+      test: "=="
+      value: "on"
+      failure_message: "The dishwasher isn't running"
+    - entity_id: alarm_control_panel.6617_truxton_lane_alarm_control_panel
+      attribute: "state"
+      test: "=="
+      value: "armed_home"
+      failure_service_call: "input_boolean/toggle"
+      service_parameters: { "entity_id": "input_boolean.alarm_home" }
+      service_message: "Setting alarm to Home mode."
+      retry_seconds: 30
+      failure_message: "Alarm not sucessfully set"
+      final_failure_message: "Unable to set alarm"
+    - entity_id: light.garage_light
+      attribute: "state"
+      test: "=="
+      value: "off"
+      failure_service_call: "light/turn_off"
+      service_parameters: { "entity_id": "light.garage_light" }
+      service_message: "Turning off garage light"
+      retry_seconds: 2
+      failure_message: "Garage light is on"
+      final_failure_message: "Unable to turn off garage light."
+    - entity_id: light.garage_entry_light
+      attribute: "state"
+      test: "=="
+      value: "off"
+      failure_service_call: "light/turn_off"
+      service_parameters: { "entity_id": "light.garage_entry_light" }
+      service_message: "Turning off garage entry light"
+      retry_seconds: 2
+      failure_message: "Garage entry light is on"
+      final_failure_message: "Unable to turn off garage entry light."
+    - entity_id: light.office_light
+      attribute: "state"
+      test: "=="
+      value: "off"
+      failure_service_call: "light/turn_off"
+      service_parameters: { "entity_id": "light.office_light" }
+      service_message: "Turning off office light"
+      retry_seconds: 2
+      failure_message: "Office light is on"
+      final_failure_message: "Unable to turn off office light."
+    - entity_id: light.office_lamp
+      attribute: "state"
+      test: "=="
+      value: "off"
+      failure_service_call: "light/turn_off"
+      service_parameters: { "entity_id": "light.office_lamp" }
+      service_message: "Turning off office lamp"
+      retry_seconds: 2
+      failure_message: "Office lamp is on"
+      final_failure_message: "Unable to turn off office light."
+    - entity_id: light.kitchen_lights
+      test: "=="
+      value: "off"
+      failure_message: "The kitchen lights are on"
