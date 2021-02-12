@@ -24,6 +24,7 @@ class auto_light(hass.Hass):
         )
 
     def light_on(self, entity, attribute, old, new, kwargs):
+        """ Turn on light. """
         self.log(
             "Turning on "
             + str(self.args["LightEntity"])
@@ -43,6 +44,7 @@ class auto_light(hass.Hass):
             )
 
     def light_off(self, kwargs):
+        """ Turn off light. """
         if (
             self.get_state(self.args["EnableOffEntity"])
             == self.args["EnableOffEnableState"]
@@ -54,11 +56,13 @@ class auto_light(hass.Hass):
             self.call_service("light/turn_off", entity_id=self.args["LightEntity"])
 
     def enable_auto(self, entity, attribute, old, new, kwargs):
+        """ Enable auto off. """
         if self.handle is not None:
             self.cancel_timer(self.handle)
         self.handle = self.run_in(self.light_off, self.args["OnTimeMin"] * 60, **kwargs)
 
     def disable_auto(self, entity, attribute, old, new, kwargs):
+        """ Disable auto off. """
         if self.handle is not None:
             self.cancel_timer(self.handle)
             self.handle = None
