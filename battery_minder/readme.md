@@ -15,7 +15,7 @@ This app uses app_messenger (avaialable in this repo) to send phone notification
 
 Sample configuration with comments
 
-```
+```yaml
 BatteryCheck:
   module: battery_minder
   class: battery_minder

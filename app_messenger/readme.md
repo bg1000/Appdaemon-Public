@@ -6,7 +6,7 @@ App_messenger is an appdaemon app that provides centralized notification for (cu
 
 Sample configuration with comments
 
-```
+```yaml
 app_messenger:
   module: app_messenger
   class: app_messenger
@@ -38,7 +38,7 @@ If you want to remove a default value from the notification (e.g. - no title), c
 
 ## Example Usage in another appdaemon app
 
-```
+```python
     def initialize(self):
         self.messenger = self.get_app("app_messenger")
         self.device = mobile_app_jim_phone

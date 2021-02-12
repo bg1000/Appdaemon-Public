@@ -14,7 +14,7 @@ This app uses app_messenger (avaialable in this repo) to send phone notification
 
 Sample configuration with comments
 
-```
+```yaml
 GoodNight:
   module: goodnight
   class: goodnight

@@ -6,7 +6,7 @@ Cover_tag listens for an NFC tag to be scanned.  If the defined cover is open wh
 
 Sample configuration with comments
 
-```
+```yaml
 CoverEntityScanned:
   module: cover_tag
   class: cover_tag_scanned
