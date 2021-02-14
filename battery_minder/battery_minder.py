@@ -102,6 +102,7 @@ class battery_minder(hass.Hass):
 
         friendly_name = kwargs["friendly_name"]
         try:
+            # if the value is going up the battery is charging
             if not self.args["report_if_charging"] and int(new) > int(old):
                 self.log(
                     "Aborting check of " + entity + " because it's charging.",
