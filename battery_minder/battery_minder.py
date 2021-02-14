@@ -29,7 +29,8 @@ class battery_minder(hass.Hass):
         """ Scans home assistant for any battery level entities/attributes. """
 
         for item in self.scan_items:
-            self.cancel_listen_state(item["handle"])
+            if item["handle"] is not None:
+                self.cancel_listen_state(item["handle"])
         del self.scan_items[:]
         for ent in self.args["included_entities"]:
             attr_regex = ent["attribute"] if "attribute" in ent else None
@@ -64,8 +65,9 @@ class battery_minder(hass.Hass):
             # If instant_notification is True then listen for state
             # changes for any discovered batteries.
             #
+
             if self.args["instant_notification"]:
-                self.listen_state(
+                item["handle"] = self.listen_state(
                     self.check_battery_level,
                     item["entity_id"],
                     attribute=item["attribute"],
@@ -74,23 +76,37 @@ class battery_minder(hass.Hass):
 
     def check_battery_level(self, entity, attribute, old, new, kwargs):
         """ Checks battery levels with values that are numeric or strings."""
-        #
-        # Check the time stamp here and return if it's too soon to check this battery again
-        # Otherwise update the time of the last check
-        #
+
         matches = [item for item in self.scan_items if item["entity_id"] == entity]
         for item in matches:
-            if (
-                int((datetime.datetime.now() - item["last_checked"]).seconds) * 60
-                < self.args["max_notification_frequency"]
-            ):
-                return
-            else:
+            # First check since discovered
+            if item["last_checked"] is None:
                 item["last_checked"] = datetime.datetime.now()
+            # Enough time has passed to check again
+            elif (
+                int((datetime.datetime.now() - item["last_checked"]).seconds) * 60
+                >= self.args["max_notification_frequency"]
+                ):
+                item["last_checked"] = datetime.datetime.now()
+            # It's too soon to check again
+            else:
+                self.log(
+                    "Aborting check of "
+                    + entity
+                    + " because it was last checked at "
+                    + str(item["last_checked"])
+                    + ".",
+                    level="DEBUG"
+                )
+                return
 
         friendly_name = kwargs["friendly_name"]
         try:
             if not self.args["report_if_charging"] and int(new) > int(old):
+                self.log(
+                    "Aborting check of " + entity + " because it's charging.",
+                    level="DEBUG",
+                )
                 return
             self.check_as_numeric(entity, attribute, friendly_name, int(new))
         except TypeError:
@@ -218,7 +234,7 @@ class battery_minder(hass.Hass):
             match["entity_id"] = None
             match["friendly_name"] = None
             match["current_value"] = "0"
-            match["last_checked"] = datetime.datetime.now()
+            match["last_checked"] = None
             match_found = False
             if re.search(entity_regex, entity_id):
                 match["entity_id"] = entity_id
@@ -238,6 +254,7 @@ class battery_minder(hass.Hass):
                     match_found = True
                     match["current_value"] = self.get_state(entity_id)
             if match_found and match["entity_id"] not in self.args["excluded_entities"]:
+                match["handle"] = None
                 matches.append(match)
 
         return matches

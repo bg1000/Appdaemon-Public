@@ -3,7 +3,7 @@ BatteryCheck:
   class: battery_minder
   log_level: DEBUG
   manual_scan: input_boolean.battery_scan
-  warning_level: 99 # integer
+  warning_level: 92 # integer
   urgent_level: 85
   instant_notification: False
   ignore_unknown: False
@@ -23,7 +23,7 @@ BatteryCheck:
   report_if_charging: False
   run_times: # use HH:MM:SS in 24 hour format e.g. - "22:00:00"
     - "08:00:00"
-    - "12:00:00"
+    - "16:00:00"
   persistent_notification: true
   phones:
     - mobile_app_bob_phone
