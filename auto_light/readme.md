@@ -1,6 +1,6 @@
 # auto_light
 
-As the name implies auto_light is for automatic lighting control.  It can perform basic motion controlled light with some extra features. You may specifiy an arbitrary number of entities and states that will turn on the light.  This might, for example, be three motion detectors, or a motion detector and a door switch.  You may also specify an arbitrary number of entoties and states that must be true for the light to turn off. You may also optionally specify an entity and state which enables/disbles automatically turning off the light. This allows you to enable and disable auto shut off from the front end or through another automation.
+As the name implies auto_light is for automatic lighting control.  It can perform basic motion controlled lighting with some extra features. You may specifiy an arbitrary number of entities and states that will turn on the light.  This might, for example, be three motion detectors, or a motion detector and a door switch.  You may also specify an arbitrary number of entities and states that must be true for the light to turn off. You may also optionally specify an entity and state which enables/disbles automatically turning off the light. This allows you to enable and disable auto shut off from the front end or through another automation.
 
 ## Example use case
 

@@ -1,6 +1,6 @@
 # cover_tag
 
-Cover_tag listens for an NFC tag to be scanned.  If the defined cover is open when the tag is scanned it will close the cover. If the defined cover is closed it will open it. If the cover is neither open nor closed the scan is ignored.  Cover_tag also accepts an optional list of device id's. If this list is present, the scan must come from a device on the list or it will be ignored. My personal use case for this is opening and closing the garage door base on scanning a tag located on the outside of the garage.
+Cover_tag listens for an NFC tag to be scanned.  If the defined cover is open when the tag is scanned it will close the cover. If the defined cover is closed it will open it. If the cover is neither open nor closed the scan is ignored.  Cover_tag also accepts an optional list of device id's. If this list is present, the scan must come from a device on the list or it will be ignored. My personal use case for this is opening and closing the garage door based on scanning a tag located on the outside of the garage.
 
 # App parameters
 

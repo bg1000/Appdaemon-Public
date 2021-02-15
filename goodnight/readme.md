@@ -1,6 +1,6 @@
 # goodnight
 
-Goodnight is triggered by scanning an NFC tag.  It runs a series of configurable test to make sure the home is in the desired condition for bed.  Currently goodnight supports checking if the attribute if an entity is either equal to (==) or not equal to (!=) a fixed value. If a particular entity is not in the desired state goodnight can optionally run a service to correct this. For example, goodnight can check to see if the alarm is set and set it if needed.  
+Goodnight is triggered by scanning an NFC tag.  It runs a series of configurable test to make sure the home is in the desired condition for bed.  Currently goodnight supports checking if the attribute of an entity is either equal to (==) or not equal to (!=) a fixed value. If a particular entity is not in the desired state goodnight can optionally run a service to correct this. For example, goodnight can check to see if the alarm is set and set it if needed.  
 
 The number of rechecks is configurable and messaging is provided for overall success/failure as well as failure messages for individual conditions. Each test with a service call has a retry_seconds parameter which determines the minimum time goodnight will wait before a recheck.  After performing all tests goodnight will not start the next recheck until this criteria has been met for all tests that have failed the check. When a recheck is performed all tests are repeated. 
 
