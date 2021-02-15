@@ -84,9 +84,9 @@ class battery_minder(hass.Hass):
                 item["last_checked"] = datetime.datetime.now()
             # Enough time has passed to check again
             elif (
-                int((datetime.datetime.now() - item["last_checked"]).seconds) * 60
+                int((datetime.datetime.now() - item["last_checked"]).seconds) / 60
                 >= self.args["max_notification_frequency"]
-                ):
+            ):
                 item["last_checked"] = datetime.datetime.now()
             # It's too soon to check again
             else:
@@ -96,7 +96,7 @@ class battery_minder(hass.Hass):
                     + " because it was last checked at "
                     + str(item["last_checked"])
                     + ".",
-                    level="DEBUG"
+                    level="DEBUG",
                 )
                 return
 
