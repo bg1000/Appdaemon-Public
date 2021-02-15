@@ -6,14 +6,14 @@ These are a few of my appdaemon apps that I have cleaned up a bit and written a 
 
 What follows is a list of the apps in this repo with a link to the readme for each app.
 
-
-| App           | Dependencies  | Description                                            |
-| ----------------|---------------|:-------------------------------------------------------|
-| [app_messenger](/app_messenger/readme.md)  | None | Centralized notification for android phones.|
-| [auto_light](/auto_light/readme.md)      | None      |  Motion light on steroids.|
-| [battery_minder](/battery_minder/readme.md) |   app_messenger   |    Set it and forget way to manage batteries.  |
-| [cover_tag](/cover_tag/readme.md) |None |Open or close a cover when an NFC tag is scanned. |
-| [goodnight](/goodnight/readme.md) | app_messenger | Makes sure the house is ready for bed when an NFC tag is scanned.
+            
+| App           | Appdaemon Dependencies  |Python Dependencies| Description                                            |
+| ----------------|---------------|:--------------------------|----------------------------|
+| [app_messenger](/app_messenger/readme.md)  | None |None| Centralized notification for android phones.|
+| [auto_light](/auto_light/readme.md)      | None      |None|  Motion light on steroids.|
+| [battery_minder](/battery_minder/readme.md) |   app_messenger   |None|    Set it and forget way to manage batteries.  |
+| [cover_tag](/cover_tag/readme.md) |None |None|Open or close a cover when an NFC tag is scanned. |
+| [goodnight](/goodnight/readme.md) | app_messenger |None| Makes sure the house is ready for bed when an NFC tag is scanned.
 
 # How to use
 
