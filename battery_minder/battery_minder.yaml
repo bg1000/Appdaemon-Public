@@ -2,12 +2,14 @@ BatteryCheck:
   module: battery_minder
   class: battery_minder
   log_level: DEBUG
+  log: battery_log
+  dependecies: app_messenger # make sure app_messenger is available before this app starts
   manual_scan: input_boolean.battery_scan
-  warning_level: 92 # integer
+  warning_level: 99 # integer
   urgent_level: 85
-  instant_notification: False
+  instant_notification: True
   ignore_unknown: False
-  max_notification_frequency: 10 # minutes
+  max_notification_frequency: 2 # minutes
   included_entities:
     - entity_id: ".*"
       attribute: "battery_level"
@@ -23,8 +25,8 @@ BatteryCheck:
   report_if_charging: False
   run_times: # use HH:MM:SS in 24 hour format e.g. - "22:00:00"
     - "08:00:00"
-    - "16:00:00"
-  persistent_notification: true
+    - "16:52:00"
+  persistent_notification: True
   phones:
     - mobile_app_bob_phone
   notification_color: red

@@ -20,6 +20,7 @@ GoodNight:
   class: goodnight
   log_level: INFO # optional, default is INFO, any valid python logging level allowed
   log: tags_log # optional, default is main_log, other logs must be defined in appdaemon.yaml before use
+  dependecies: app_messenger # make sure app_messenger is available before this app starts
   max_rechecks: 1 # max # times to recheck before sending overall failure message
   overall_failure_message: "Unable to automatically correct all noted problems."
   overall_success_message: "House is ready for bed. Goodnight."

@@ -21,6 +21,7 @@ BatteryCheck:
   class: battery_minder
   log_level: DEBUG # optional, default is INFO, any valid python logging level allowed
   log: main_log # optional, default is main_log, other logs must be defined in appdaemon.yaml before use
+  dependecies: app_messenger
   manual_scan: input_boolean.battery_scan # optional - if defined will trigger a scan on state change
   warning_level: 99 # integer
   urgent_level: 85 #

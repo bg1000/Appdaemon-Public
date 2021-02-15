@@ -3,6 +3,7 @@ GoodNight:
   class: goodnight
   log_level: DEBUG
   log: tags_log
+  dependecies: app_messenger
   max_rechecks: 1
   overall_failure_message: "Unable to automatically correct all noted problems."
   overall_success_message: "House is ready for bed. Goodnight."
